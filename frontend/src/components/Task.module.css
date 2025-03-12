@@ -23,6 +23,7 @@
 
 .icon {
   font-size: 24px;
+  cursor: pointer;
 }
 .icon_info {
   color: var(--blue-color);
