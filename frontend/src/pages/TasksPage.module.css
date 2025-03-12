@@ -1,0 +1,50 @@
+.task_page {
+  width: 100dvw;
+  display: flex;
+  justify-content: center;
+}
+
+.header_todo_list {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 5.5rem;
+  margin: 0;
+  padding: 1rem 0 2rem;
+  font-size: 2.5rem;
+  background-color: var(--light-gray-color);
+  text-align: center;
+  padding: auto;
+}
+
+.btn_add_task_container {
+  position: fixed;
+  width: 100%;
+  height: 5rem;
+  bottom: 0;
+  background-color: var(--light-gray-color);
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.btn_add_task {
+  margin: 0 auto;
+  height: 3rem;
+}
+
+@media (min-width: 310px) {
+}
+
+@media (min-width: 481px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
+}

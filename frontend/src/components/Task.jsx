@@ -1,0 +1,37 @@
+import { MdInfoOutline } from "react-icons/md";
+import { MdEditNote } from "react-icons/md";
+import { MdDeleteOutline } from "react-icons/md";
+import styles from "./Task.module.css";
+
+function Task({ task }) {
+  return (
+    <div className={styles.task_box}>
+      <div className={styles.task_basic}>
+        <p>{task.taskName}</p>
+        <div className={styles.buttons_box}>
+          <MdInfoOutline className={`${styles.icon} ${styles.icon_info}`} />
+          <MdEditNote className={`${styles.icon} ${styles.icon_edit}`} />
+          <MdDeleteOutline className={`${styles.icon} ${styles.icon_delete}`} />
+        </div>
+      </div>
+      <div className={styles.task_details}>
+        <p>Priority: </p>
+        <p>Deadline: </p>
+        <p>Created: </p>
+        <p>Tags: </p>
+      </div>
+      <div className={styles.input_container}>
+        <input
+          type="range"
+          defaultValue="0"
+          min="0"
+          max="100"
+          step="5"
+          className={styles.progress_input}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default Task;
