@@ -15,10 +15,11 @@ function Task({ task }) {
         </div>
       </div>
       <div className={styles.task_details}>
-        <p>Priority: </p>
-        <p>Deadline: </p>
-        <p>Created: </p>
-        <p>Tags: </p>
+        <p>Priority: {task.priority}</p>
+        <p>Deadline: {task.deadline} </p>
+        <p>Created: {task.createdAt} </p>
+        <p>Tags: {task.tags} </p>
+        <p>Notes: {task.notes} </p>
       </div>
       <div className={styles.input_container}>
         <input
@@ -27,6 +28,7 @@ function Task({ task }) {
           min="0"
           max="100"
           step="5"
+          value={task.progress}
           className={styles.progress_input}
         />
       </div>

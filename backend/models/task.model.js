@@ -8,6 +8,7 @@ const taskSchema = mongoose.Schema(
     completed: { type: Boolean, default: 0 },
     progress: { type: Number, min: 0, max: 100, default: 0 },
     tags: { type: [String], default: [] },
+    notes: { type: String, trim: true },
   },
   {
     timestamps: true,
