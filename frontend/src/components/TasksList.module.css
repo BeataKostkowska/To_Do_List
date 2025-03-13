@@ -1,9 +1,7 @@
 .tasks_list_container {
-    min-width: 30%;
-    max-width: 60%;
-    position: relative;
-    top: 5.5rem;
-  }
-  
-  
-  
+  min-width: 30%;
+  max-width: 60%;
+  max-height: 70%;
+  margin: 6rem auto;
+  overflow-y: auto;
+}

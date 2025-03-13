@@ -24,8 +24,8 @@ function Task({ task }) {
         className={styles.task_details}
         style={{ display: showDetails ? "block" : "none" }}
       >
-        <p>Priority: {task.priority}</p>
         <p>Deadline: {task.deadline} </p>
+        <p>Priority: {task.priority}</p>
         <p>Created: {task.createdAt} </p>
         <p>Tags: {task.tags} </p>
         <p>Notes: {task.notes} </p>

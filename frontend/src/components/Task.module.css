@@ -48,6 +48,7 @@
   height: 3px;
   background-color: var(--dark-gray-color);
   outline: none;
+  padding: 0;
 }
 .progress_input::-webkit-slider-thumb {
   -webkit-appearance: none;
