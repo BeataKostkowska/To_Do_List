@@ -3,10 +3,12 @@ import TasksList from "../components/TasksList";
 // import { MdAddTask } from "react-icons/md";
 import styles from "./TasksPage.module.css";
 import { useState } from "react";
+import TaskEditForm from "../components/TaskEditForm";
+import { useFormStore } from "../store";
 
 function TasksPage() {
   const [taskFormOpen, setTaskFormOpen] = useState(false);
-
+  const showEditForm = useFormStore((state) => state.showEditForm);
 
   return (
     <div className={styles.task_page}>
@@ -27,6 +29,8 @@ function TasksPage() {
           Add task
         </button>
       </div>
+
+      {showEditForm ? <TaskEditForm /> : ""}
     </div>
   );
 }

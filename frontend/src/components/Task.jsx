@@ -5,9 +5,12 @@ import styles from "./Task.module.css";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
+import { useFormStore } from "../store";
 
 function Task({ task }) {
   const [showDetails, setShowDetails] = useState(false);
+
+  const openEditForm = useFormStore((state) => state.openEditForm);
 
   const queryClient = useQueryClient();
 
@@ -58,7 +61,10 @@ function Task({ task }) {
             className={`${styles.icon} ${styles.icon_info}`}
             onClick={() => setShowDetails(!showDetails)}
           />
-          <MdEditNote className={`${styles.icon} ${styles.icon_edit}`} />
+          <MdEditNote
+            className={`${styles.icon} ${styles.icon_edit}`}
+            onClick={() => openEditForm(task)}
+          />
           <MdDeleteOutline
             className={`${styles.icon} ${styles.icon_delete}`}
             onClick={handleDelete}
