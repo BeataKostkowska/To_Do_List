@@ -3,9 +3,35 @@ import { MdEditNote } from "react-icons/md";
 import { MdDeleteOutline } from "react-icons/md";
 import styles from "./Task.module.css";
 import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
 
 function Task({ task }) {
   const [showDetails, setShowDetails] = useState(false);
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (progress) => {
+      return axios.patch(
+        `http://localhost:3000/api/tasks/${task._id}`,
+        progress
+      );
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries(["tasks"]);
+      console.log("Task progress updated successfully ", data);
+    },
+  });
+
+  const handleProgressChange = (e) => {
+    const newProgress = e.target.value;
+    mutation.mutate({ progress: newProgress });
+    console.log(task.progress);
+  };
 
   return (
     <div className={styles.task_box}>
@@ -33,12 +59,12 @@ function Task({ task }) {
       <div className={styles.input_container}>
         <input
           type="range"
-          defaultValue="0"
           min="0"
           max="100"
           step="5"
-          // value={task.progress}
+          value={task.progress}
           className={styles.progress_input}
+          onChange={handleProgressChange}
         />
       </div>
     </div>
