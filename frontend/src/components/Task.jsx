@@ -11,7 +11,7 @@ function Task({ task }) {
 
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
+  const progressMutation = useMutation({
     mutationFn: (progress) => {
       return axios.patch(
         `http://localhost:3000/api/tasks/${task._id}`,
@@ -26,11 +26,27 @@ function Task({ task }) {
       console.log("Task progress updated successfully ", data);
     },
   });
-
   const handleProgressChange = (e) => {
     const newProgress = e.target.value;
-    mutation.mutate({ progress: newProgress });
+    progressMutation.mutate({ progress: newProgress });
     console.log(task.progress);
+  };
+
+  const deleteMutation = useMutation({
+    mutationFn: (id) => {
+      return axios.delete(`http://localhost:3000/api/tasks/${id}`);
+    },
+    onError: (error) => {
+      console.error(error);
+    },
+    onSuccess: (data) => {
+      console.log("Task deleted successfully ", data);
+      queryClient.invalidateQueries(["tasks"]);
+    },
+  });
+  const handleDelete = () => {
+    console.log(`Delete that task`);
+    deleteMutation.mutate(task._id);
   };
 
   return (
@@ -43,7 +59,10 @@ function Task({ task }) {
             onClick={() => setShowDetails(!showDetails)}
           />
           <MdEditNote className={`${styles.icon} ${styles.icon_edit}`} />
-          <MdDeleteOutline className={`${styles.icon} ${styles.icon_delete}`} />
+          <MdDeleteOutline
+            className={`${styles.icon} ${styles.icon_delete}`}
+            onClick={handleDelete}
+          />
         </div>
       </div>
       <div
