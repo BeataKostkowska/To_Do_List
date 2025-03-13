@@ -55,7 +55,19 @@ function Task({ task }) {
   return (
     <div className={styles.task_box}>
       <div className={styles.task_basic}>
-        <p>{task.taskName}</p>
+        <p>
+          {task.priority === 5 ? (
+            <span className={styles.exclamation}>!!!</span>
+          ) : (
+            ""
+          )}
+          {task.priority === 4 ? (
+            <span className={styles.exclamation}>!</span>
+          ) : (
+            ""
+          )}
+          <span className={styles.taskname_text}>{task.taskName}</span>
+        </p>
         <div className={styles.buttons_box}>
           <MdInfoOutline
             className={`${styles.icon} ${styles.icon_info}`}

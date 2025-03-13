@@ -8,11 +8,22 @@
 .task_basic {
   display: flex;
   justify-content: space-between;
+}
+
+.taskname_text {
   text-decoration: 1px underline var(--teal-color);
   text-underline-offset: 2px;
+  text-align: left;
 }
+
+.exclamation {
+  color: var(--coral-color);
+  font-weight: 700;
+  text-decoration: none;
+  padding-right: 0.5rem;
+}
+
 .task_details {
-  /* display: none;   !!!!!!!!!!!!!!!!!!!!! */
   font-size: 12px;
   padding: 12px 24px;
 }
