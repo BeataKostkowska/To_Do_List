@@ -32,6 +32,7 @@
 .btn_add_task {
   margin: 0 auto;
   height: 3rem;
+  background-color: var(--light-gray-color);
 }
 
 @media (min-width: 310px) {

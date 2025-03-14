@@ -1,0 +1,43 @@
+.frame {
+  border: 2px var(--teal-color) solid;
+  border-radius: 8px;
+  width: 3.6rem;
+  height: 1.6rem;
+  padding: 0 0.2rem;
+  background-color: var(--light-gray-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.frame:hover {
+  background-color: var(--light-gray-color);
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: var(--dark-gray-color);
+  z-index: 0;
+}
+
+.toggle {
+  height: 1.6rem;
+  width: 0.8rem;
+  background-color: var(--teal-color);
+  z-index: 1;
+
+  position: relative;
+  top: 0;
+}
+
+/* 
+@keyframes toggle-left {
+  from {
+    right: 0;
+    border-radius: 0;
+  }
+  to {
+    width: 6rem;
+    right: 1rem;
+    border-radius: 8px 0 0 8px;
+  }
+} */

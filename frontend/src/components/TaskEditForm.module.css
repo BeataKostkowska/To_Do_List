@@ -5,7 +5,7 @@
   left: 0;
   width: 100dvw;
   height: 100dvh;
-  background-color: #d5d4d4ab;
+  background-color: var(--outside-modal-background);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,4 +79,5 @@ textarea {
 .edit_form_buttons {
   margin-bottom: 0;
   height: 3rem;
+  background-color: var(--light-gray-color);
 }
