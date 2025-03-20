@@ -17,7 +17,9 @@ function TasksPage() {
         <TaskForm />
       ) : (
         <>
-          {/* <LightDarkModeButton /> */}
+          <div className={styles.settings_container}>
+            <LightDarkModeButton />
+          </div>
           <h1 className={styles.header_todo_list}>To-Do List:</h1>
           <TasksList />
         </>
