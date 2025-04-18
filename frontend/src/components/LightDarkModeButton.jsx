@@ -19,7 +19,9 @@ function LightDarkModeButton() {
   return (
     <button className={styles.frame} onClick={changeMode}>
       <MdOutlineLightMode className={styles.icon} />
-      <div className={styles.toggle}></div>
+      <div
+        className={`${styles.toggle} ${lightMode ? styles.light : styles.dark}`}
+      ></div>
       <MdDarkMode className={styles.icon} />
     </button>
   );

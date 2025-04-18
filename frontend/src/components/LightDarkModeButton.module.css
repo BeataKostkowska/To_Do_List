@@ -8,10 +8,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
-}
-.frame:hover {
-  background-color: var(--light-gray-color);
+  position: relative;
+  overflow: hidden;
 }
 
 .icon {
@@ -21,24 +19,55 @@
 }
 
 .toggle {
-  height: 1.6rem;
-  width: 0.8rem;
-  background-color: var(--teal-color);
-  z-index: 1;
-
-  position: relative;
+  position: absolute;
   top: 0;
+  z-index: 1;
+  height: 100%;
+  background-color: var(--teal-color);
 }
 
-/* 
-@keyframes toggle-left {
-  from {
-    right: 0;
+/* --- Animation classes --- */
+.light {
+  animation: darkToLight 3s forwards;
+}
+.dark {
+  animation: lightToDark 3s forwards;
+}
+
+/* Light → Dark  animation */
+@keyframes lightToDark {
+  0% {
+    left: 50%;
+    width: 50%;
     border-radius: 0;
   }
-  to {
-    width: 6rem;
-    right: 1rem;
-    border-radius: 8px 0 0 8px;
+  50% {
+    left: 0;
+    width: 100%;
+    border-radius: 0;
   }
-} */
+  100% {
+    left: 0;
+    width: 50%;
+    border-radius: 0;
+  }
+}
+
+/* Dark → Light animation */
+@keyframes darkToLight {
+  0% {
+    left: 0;
+    width: 50%;
+    border-radius: 0;
+  }
+  50% {
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+  100% {
+    left: 50%;
+    width: 50%;
+    border-radius: 0;
+  }
+}
