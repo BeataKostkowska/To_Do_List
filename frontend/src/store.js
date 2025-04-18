@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 export const useFormStore = create((set) => ({
   showEditForm: false,
@@ -12,7 +13,15 @@ const usersDefaultSetting = window.matchMedia(
   "(prefers-color-scheme: light)"
 ).matches;
 
-export const useThemeStore = create((set) => ({
-  lightMode: usersDefaultSetting,
-  changeMode: () => set((state) => ({ lightMode: !state.lightMode })),
-}));
+export const useThemeStore = create()(
+  persist(
+    (set) => ({
+      lightMode: usersDefaultSetting,
+      changeMode: () => set((state) => ({ lightMode: !state.lightMode })),
+    }),
+    {
+      name: "theme-storage",
+      storage: createJSONStorage(() => localStorage),
+    }
+  )
+);
