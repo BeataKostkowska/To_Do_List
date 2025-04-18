@@ -1,6 +1,6 @@
 import "./App.css";
 import TasksPage from "./pages/TasksPage";
-import WelcomePage from "./pages/WelcomePage";
+// import WelcomePage from "./pages/WelcomePage";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 

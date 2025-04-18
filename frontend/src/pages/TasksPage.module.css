@@ -34,6 +34,10 @@
   height: 3rem;
 }
 
+h1 {
+  color: var(--teal-color);
+}
+
 @media (min-width: 310px) {
 }
 
