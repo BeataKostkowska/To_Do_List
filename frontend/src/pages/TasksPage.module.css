@@ -48,6 +48,8 @@
   margin: 0 auto;
   height: 3rem;
   background-color: var(--light-gray-color);
+  color: var(--dark-gray-color);
+  border: 2px var(--teal-color) solid;
 }
 
 @media (min-width: 310px) {

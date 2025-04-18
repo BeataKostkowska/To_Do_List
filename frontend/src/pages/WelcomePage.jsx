@@ -5,9 +5,9 @@ function WelcomePage() {
     <>
       <h1 className={styles.header_welcome}>Let's get things done!</h1>
       <div className={styles.buttons_container}>
-        <button>Explore</button>
-        <button>Sign in</button>
-        <button>Sign up</button>
+        <button className={styles.btn}>Explore</button>
+        <button className={styles.btn}>Sign in</button>
+        <button className={styles.btn}>Sign up</button>
       </div>
     </>
   );
