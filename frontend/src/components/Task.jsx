@@ -15,10 +15,10 @@ function Task({ task }) {
   const queryClient = useQueryClient();
 
   const progressMutation = useMutation({
-    mutationFn: (progress) => {
+    mutationFn: (updatedData) => {
       return axios.patch(
         `http://localhost:3000/api/tasks/${task._id}`,
-        progress
+        updatedData
       );
     },
     onError: (error) => {
@@ -29,9 +29,13 @@ function Task({ task }) {
       console.log("Task progress updated successfully ", data);
     },
   });
+
   const handleProgressChange = (e) => {
-    const newProgress = e.target.value;
-    progressMutation.mutate({ progress: newProgress });
+    const newProgress = parseInt(e.target.value);
+    progressMutation.mutate({
+      progress: newProgress,
+      completed: newProgress === 100 ? true : false,
+    });
     console.log(task.progress);
   };
 
@@ -53,7 +57,11 @@ function Task({ task }) {
   };
 
   return (
-    <div className={styles.task_box}>
+    <div
+      className={`${styles.task_box}  ${
+        task.completed ? styles.completed : ""
+      }`}
+    >
       <div className={styles.task_basic}>
         <p>
           {task.priority === 5 ? (

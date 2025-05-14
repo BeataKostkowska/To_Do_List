@@ -11,6 +11,11 @@
   justify-content: space-between;
 }
 
+.completed {
+  filter: grayscale(100%);
+  opacity: 0.8;
+}
+
 .taskname_text {
   text-decoration: 1px underline var(--teal-color);
   text-underline-offset: 2px;
