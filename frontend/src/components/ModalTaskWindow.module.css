@@ -1,0 +1,47 @@
+.page_container {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: var(--outside-modal-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_container {
+  border: 3px var(--teal-color) solid;
+  padding: 2rem;
+  width: 50%;
+  height: fit-content;
+  background-color: var(--light-gray-color);
+}
+
+.close_button {
+  all: unset;
+  position: relative;
+  bottom: 1.5rem;
+  left: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: block;
+  justify-self: right;
+}
+.close_button:hover {
+  all: unset;
+  position: relative;
+  bottom: 1.5rem;
+  left: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: block;
+  justify-self: right;
+  color: var(--coral-color);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}

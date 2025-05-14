@@ -1,17 +1,8 @@
-.task_form_page {
-  display: block;
-  width: 100dvw;
-}
-
-h1 {
-  text-align: center;
-}
-
 .form_container {
   margin: 1rem auto 2rem;
-  width: 50dvw;
-  border: 3px var(--teal-color) solid;
-  box-shadow: 5px 3px 6px rgba(0, 128, 128, 0.6);
+  width: 80%;
+  /* border: 3px var(--teal-color) solid;
+  box-shadow: 5px 3px 6px rgba(0, 128, 128, 0.6); */
   padding: 2rem;
   display: flex;
   flex-direction: column;

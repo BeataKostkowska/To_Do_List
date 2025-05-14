@@ -7,6 +7,11 @@ export const useFormStore = create((set) => ({
   openEditForm: (task) =>
     set((state) => ({ showEditForm: !state.showEditForm, taskData: task })),
   closeEditForm: () => set((state) => ({ showEditForm: !state.showEditForm })),
+  showAddTaskForm: false,
+  openAddTaskForm: () =>
+    set((state) => ({ showAddTaskForm: !state.showAddTaskForm })),
+  closeAddTaskForm: () =>
+    set((state) => ({ showAddTaskForm: !state.showAddTaskForm })),
 }));
 
 const usersDefaultSetting = window.matchMedia(

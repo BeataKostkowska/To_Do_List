@@ -1,9 +1,14 @@
+import ModalTaskWindow from "./ModalTaskWindow";
+import Button from "../components/Button";
 import { useState } from "react";
 import styles from "./TaskForm.module.css";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { useFormStore } from "../store";
 
 function TaskForm() {
+  const closeAddTaskForm = useFormStore((state) => state.closeAddTaskForm);
+
   const emptyTask = {
     taskName: "",
     deadline: "",
@@ -33,9 +38,7 @@ function TaskForm() {
   };
 
   return (
-    <div className={styles.task_form_page}>
-      <h1>Create Task:</h1>
-
+    <ModalTaskWindow header={"Create Task:"} onClickClose={closeAddTaskForm}>
       <form className={styles.form_container}>
         <label htmlFor="taskName">Task description:</label>
         <input
@@ -79,11 +82,10 @@ function TaskForm() {
         />
       </form>
       <div className={styles.form_buttons_container}>
-        <button onClick={() => setNewTask(emptyTask)}>Clear form</button>
-        <button onClick={handleCreateTask}>Create task</button>
+        <Button onClick={() => setNewTask(emptyTask)}>Clear form</Button>
+        <Button onClick={handleCreateTask}>Create task</Button>
       </div>
-      {/* Change button from Add task -> Go back to Tasks List */}
-    </div>
+    </ModalTaskWindow>
   );
 }
 
