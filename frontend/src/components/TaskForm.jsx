@@ -2,12 +2,13 @@ import ModalTaskWindow from "./ModalTaskWindow";
 import Button from "../components/Button";
 import { useState } from "react";
 import styles from "./TaskForm.module.css";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useFormStore } from "../store";
 import Form from "./Form";
 
 function TaskForm() {
+  const queryClient = useQueryClient();
   const closeAddTaskForm = useFormStore((state) => state.closeAddTaskForm);
 
   const emptyTask = {
@@ -28,6 +29,7 @@ function TaskForm() {
     },
     onSuccess: (data) => {
       console.log("Task created successfully ", data);
+      queryClient.invalidateQueries(["tasks"]);
     },
   });
 
