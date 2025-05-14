@@ -35,6 +35,7 @@ function TaskForm() {
     mutation.mutate(newTask);
     console.log(newTask);
     setNewTask(emptyTask);
+    closeAddTaskForm();
   };
 
   return (

@@ -32,7 +32,7 @@ function TaskEditForm() {
 
   return (
     <ModalTaskWindow onClickClose={closeEditForm} header={"Edit Task:"}>
-      <form>
+      <form className={styles.form_container}>
         <label htmlFor="taskName">Task description:</label>
         <input
           id="taskName"
