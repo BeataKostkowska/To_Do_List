@@ -5,6 +5,7 @@ import styles from "./TasksPage.module.css";
 import { useState } from "react";
 import TaskEditForm from "../components/TaskEditForm";
 import { useFormStore } from "../store";
+import LightDarkModeButton from "../components/LightDarkModeButton";
 
 function TasksPage() {
   const [taskFormOpen, setTaskFormOpen] = useState(false);
@@ -16,6 +17,9 @@ function TasksPage() {
         <TaskForm />
       ) : (
         <>
+          <div className={styles.settings_container}>
+            <LightDarkModeButton />
+          </div>
           <h1 className={styles.header_todo_list}>To-Do List:</h1>
           <TasksList />
         </>

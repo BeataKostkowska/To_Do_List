@@ -1,4 +1,5 @@
 import "./App.css";
+import LightDarkModeButton from "./components/LightDarkModeButton";
 import TasksPage from "./pages/TasksPage";
 // import WelcomePage from "./pages/WelcomePage";
 

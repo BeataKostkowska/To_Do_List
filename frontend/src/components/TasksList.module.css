@@ -2,6 +2,7 @@
   min-width: 30%;
   max-width: 60%;
   max-height: 70%;
-  margin: 6rem auto;
+  margin: 8rem auto;
   overflow-y: auto;
+  background-color: var(--light-gray-color);
 }

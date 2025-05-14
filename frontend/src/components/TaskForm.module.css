@@ -30,11 +30,15 @@ input {
   margin-bottom: 0.5rem;
   padding: 0.5rem;
   margin: 0 auto;
+  background-color: var(--light-gray-color);
+  color: var(--dark-gray-color);
 }
 
 textarea {
   width: 80%;
   margin: 0 auto;
+  background-color: var(--light-gray-color);
+  color: var(--dark-gray-color);
 }
 
 .form_buttons_container {

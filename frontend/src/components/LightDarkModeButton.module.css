@@ -1,0 +1,85 @@
+.frame {
+  border: 2px var(--teal-color) solid;
+  border-radius: 8px;
+  width: 3.6rem;
+  height: 1.6rem;
+  padding: 0 0.2rem;
+  background-color: var(--light-gray-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: var(--dark-gray-color);
+  z-index: 0;
+}
+
+.toggle {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  background-color: var(--teal-color);
+}
+/* Startting position for borwser settings */
+.light {
+  left: 50%;
+  width: 50%;
+  border-radius: 0;
+}
+
+.dark {
+  left: 0;
+  width: 50%;
+  border-radius: 0;
+}
+
+/* --- Animation classes --- */
+.light_animation {
+  animation: darkToLight 1s ease-in-out forwards;
+}
+.dark_animation {
+  animation: lightToDark 1s ease-in-out forwards;
+}
+
+/* Light → Dark  animation */
+@keyframes lightToDark {
+  0% {
+    left: 50%;
+    width: 50%;
+    border-radius: 0;
+  }
+  50% {
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+  100% {
+    left: 0;
+    width: 50%;
+    border-radius: 0;
+  }
+}
+
+/* Dark → Light animation */
+@keyframes darkToLight {
+  0% {
+    left: 0;
+    width: 50%;
+    border-radius: 0;
+  }
+  50% {
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+  }
+  100% {
+    left: 50%;
+    width: 50%;
+    border-radius: 0;
+  }
+}
