@@ -25,12 +25,24 @@
   height: 100%;
   background-color: var(--teal-color);
 }
+/* Startting position for borwser settings */
+.light {
+  left: 50%;
+  width: 50%;
+  border-radius: 0;
+}
+
+.dark {
+  left: 0;
+  width: 50%;
+  border-radius: 0;
+}
 
 /* --- Animation classes --- */
-.light {
+.light_animation {
   animation: darkToLight 1s ease-in-out forwards;
 }
-.dark {
+.dark_animation {
   animation: lightToDark 1s ease-in-out forwards;
 }
 
