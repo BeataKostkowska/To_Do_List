@@ -29,7 +29,7 @@
   padding-right: 0.5rem;
 }
 
-.task_details {
+/* .task_details {
   font-size: 12px;
   padding: 16px;
   width: 60%;
@@ -54,7 +54,7 @@ td:nth-child(odd) {
 td:nth-child(even) {
   min-width: 100px;
   width: 70%;
-}
+} */
 
 .buttons_box {
   display: inline;

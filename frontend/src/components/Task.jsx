@@ -7,6 +7,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useFormStore } from "../store";
 import { Tooltip } from "react-tooltip";
+import TaskDetails from "./TaskDetails";
 
 function Task({ task }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -55,12 +56,6 @@ function Task({ task }) {
   const handleDelete = () => {
     console.log(`Delete that task`);
     deleteMutation.mutate(task._id);
-  };
-
-  const prettyDate = (dateISO) => {
-    const date = new Date(dateISO);
-    const newDate = date.toLocaleString(navigator.language);
-    return newDate.replace(", ", " at ");
   };
 
   return (
@@ -131,38 +126,9 @@ function Task({ task }) {
           </div>
         </div>
       </div>
-      <table
-        className={styles.task_details}
-        style={{ display: showDetails ? "block" : "none" }}
-      >
-        {task.deadline && (
-          <tr>
-            <td>Deadline:</td> <td>{prettyDate(task.deadline)} </td>
-          </tr>
-        )}
-        {task.priority && (
-          <tr>
-            <td>Priority:</td> <td>{task.priority}</td>
-          </tr>
-        )}
-        {task.createdAt && (
-          <tr>
-            <td>Created:</td>
-            <td> {prettyDate(task.createdAt)}</td>{" "}
-          </tr>
-        )}
-        {task.tags.length > 0 && (
-          <tr>
-            <td>Tags:</td>
-            <td> {task.tags} </td>
-          </tr>
-        )}
-        {task.notes && (
-          <tr>
-            <td>Notes:</td> <td>{task.notes} </td>
-          </tr>
-        )}
-      </table>
+      
+      <TaskDetails task={task} showDetails={showDetails} />
+
       <div className={styles.input_container}>
         <input
           type="range"
