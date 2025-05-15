@@ -31,7 +31,29 @@
 
 .task_details {
   font-size: 12px;
-  padding: 12px 24px;
+  padding: 16px;
+  width: 60%;
+  margin: 0 auto;
+}
+tr {
+  width: 100%;
+  min-width: 170px;
+  display: block;
+  display: flex;
+  padding: 2px 4px;
+  border-bottom: 1px solid var(--teal-color);
+}
+tr:first-of-type {
+  border-top: 1px solid var(--teal-color);
+}
+
+td:nth-child(odd) {
+  min-width: 70px;
+  width: 30%;
+}
+td:nth-child(even) {
+  min-width: 100px;
+  width: 70%;
 }
 
 .buttons_box {
@@ -60,8 +82,7 @@
   background-color: var(--light-gray-color);
   color: var(--dark-gray-color);
   padding: 4px;
- }
-
+}
 
 .input_container {
   display: flex;
