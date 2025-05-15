@@ -15,7 +15,7 @@ function Form({ data, setData, children }) {
       <label htmlFor="deadline">Deadline:</label>
       <input
         id="deadline"
-        type="date"
+        type="datetime-local"
         value={data.deadline || ""}
         onChange={(e) => {
           console.log(e.target.value);
