@@ -52,6 +52,16 @@
 .icon_delete {
   color: var(--coral-color);
 }
+.tooltip_container {
+  all: unset;
+}
+.tooltip_container .tooltip {
+  border: 2px solid var(--blue-color);
+  background-color: var(--light-gray-color);
+  color: var(--dark-gray-color);
+  padding: 4px;
+ }
+
 
 .input_container {
   display: flex;

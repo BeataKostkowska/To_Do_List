@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useFormStore } from "../store";
+import { Tooltip } from "react-tooltip";
 
 function Task({ task }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -77,18 +78,51 @@ function Task({ task }) {
           <span className={styles.taskname_text}>{task.taskName}</span>
         </p>
         <div className={styles.buttons_box}>
-          <MdInfoOutline
-            className={`${styles.icon} ${styles.icon_info}`}
-            onClick={() => setShowDetails(!showDetails)}
-          />
-          <MdEditNote
-            className={`${styles.icon} ${styles.icon_edit}`}
-            onClick={() => openEditForm(task)}
-          />
-          <MdDeleteOutline
-            className={`${styles.icon} ${styles.icon_delete}`}
-            onClick={handleDelete}
-          />
+          <div className={styles.tooltip_container}>
+            <MdInfoOutline
+              className={`${styles.icon} ${styles.icon_info}`}
+              onClick={() => setShowDetails(!showDetails)}
+              data-tooltip-id="details"
+              data-tooltip-delay-show={800}
+            />
+            <Tooltip
+              id="details"
+              place="bottom"
+              content="Show details"
+              className={styles.tooltip}
+              border="2px solid var(--blue-color)"
+            />
+          </div>
+          <div className={styles.tooltip_container}>
+            <MdEditNote
+              className={`${styles.icon} ${styles.icon_edit}`}
+              onClick={() => openEditForm(task)}
+              data-tooltip-id="edit"
+              data-tooltip-delay-show={800}
+            />
+            <Tooltip
+              id="edit"
+              place="bottom"
+              content="Edit task"
+              className={styles.tooltip}
+              border="2px solid var(--orange-color)"
+            />
+          </div>
+          <div className={styles.tooltip_container}>
+            <MdDeleteOutline
+              className={`${styles.icon} ${styles.icon_delete}`}
+              onClick={handleDelete}
+              data-tooltip-id="delete"
+              data-tooltip-delay-show={800}
+            />
+            <Tooltip
+              id="delete"
+              place="bottom"
+              content="Delete task"
+              className={styles.tooltip}
+              border="2px solid var(--coral-color)"
+            />
+          </div>
         </div>
       </div>
       <div
