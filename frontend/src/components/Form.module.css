@@ -27,6 +27,9 @@ textarea {
   color: var(--dark-gray-color);
 }
 
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(var(--calendar-icon-filter));
+}
 /* .form_buttons_container {
   margin-top: 2rem;
   height: 3rem;

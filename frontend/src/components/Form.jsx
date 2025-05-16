@@ -1,6 +1,16 @@
+// import { useState } from "react";
 import styles from "./Form.module.css";
+// import DatePicker from "react-datepicker";
 
 function Form({ data, setData, children }) {
+  const currentDate = () => {
+    const currentDate = new Date().toISOString().slice(0, -8);
+    console.log(`current: ${currentDate}`);
+    return currentDate;
+  };
+
+  // const [startDate, setStartDate] = useState(new Date());
+
   return (
     <form className={styles.form_container}>
       <label htmlFor="taskName">Task description:</label>
@@ -17,11 +27,30 @@ function Form({ data, setData, children }) {
         id="deadline"
         type="datetime-local"
         value={data.deadline || ""}
+        min={currentDate()}
         onChange={(e) => {
           console.log(e.target.value);
           setData({ ...data, deadline: e.target.value }); // ERROR IN EDIT TASK FORM -> after first change (sometimes):  A component is changing an uncontrolled input to be controlled
         }}
       />
+      {/* <DatePicker
+        // showIcon
+        selected={new Date()}
+        isClearable
+        // placeholderText="Set deadline"
+        shouldCloseOnSelect={true}
+        // locale={navigator.language}
+        locale="pl-PL"
+        showTimeSelect
+        timeFormat="HH:mm"
+        timeIntervals={15}
+        timeCaption="time"
+        dateFormat="DD-MM-YYYY, HH:mm"
+        onChange={(e) => {
+          console.log(e.target.value);
+          setData({ ...data, deadline: e.target.value });
+        }}
+      /> */}
 
       <label htmlFor="priority">Priority level:</label>
       <input
