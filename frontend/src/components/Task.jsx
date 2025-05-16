@@ -11,9 +11,10 @@ import TaskDetails from "./TaskDetails";
 
 function Task({ task }) {
   const [showDetails, setShowDetails] = useState(false);
+  const [showValue, setShowValue] = useState(false);
+  const [localProgress, setLocalProgress] = useState(task.progress);
 
   const openEditForm = useFormStore((state) => state.openEditForm);
-
   const queryClient = useQueryClient();
 
   const progressMutation = useMutation({
@@ -26,19 +27,24 @@ function Task({ task }) {
     onError: (error) => {
       console.error(error);
     },
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries(["tasks"]);
-      console.log("Task progress updated successfully ", data);
     },
   });
 
   const handleProgressChange = (e) => {
     const newProgress = parseInt(e.target.value);
-    progressMutation.mutate({
-      progress: newProgress,
-      completed: newProgress === 100 ? true : false,
-    });
-    console.log(task.progress);
+    setLocalProgress(newProgress);
+
+    // Debounce the API call
+    const timeoutId = setTimeout(() => {
+      progressMutation.mutate({
+        progress: newProgress,
+        completed: newProgress === 100 ? true : false,
+      });
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
   };
 
   const deleteMutation = useMutation({
@@ -48,21 +54,18 @@ function Task({ task }) {
     onError: (error) => {
       console.error(error);
     },
-    onSuccess: (data) => {
-      console.log("Task deleted successfully ", data);
+    onSuccess: () => {
       queryClient.invalidateQueries(["tasks"]);
     },
   });
+
   const handleDelete = () => {
-    console.log(`Delete that task`);
     deleteMutation.mutate(task._id);
   };
 
   return (
     <div
-      className={`${styles.task_box}  ${
-        task.completed ? styles.completed : ""
-      }`}
+      className={`${styles.task_box} ${task.completed ? styles.completed : ""}`}
     >
       <div className={styles.task_basic}>
         <p>
@@ -126,19 +129,29 @@ function Task({ task }) {
           </div>
         </div>
       </div>
-      
+
       <TaskDetails task={task} showDetails={showDetails} />
 
       <div className={styles.input_container}>
-        <input
-          type="range"
-          min="0"
-          max="100"
-          step="5"
-          value={task.progress}
-          className={styles.progress_input}
-          onChange={handleProgressChange}
-        />
+        <div
+          className={styles.range_wrapper}
+          style={{ "--value": `${localProgress}%` }}
+        >
+          <input
+            type="range"
+            min="0"
+            max="100"
+            step="5"
+            value={localProgress}
+            className={styles.progress_input}
+            onChange={handleProgressChange}
+            onMouseEnter={() => setShowValue(true)}
+            onMouseLeave={() => setShowValue(false)}
+          />
+          {showValue && (
+            <output className={styles.value_indicator}>{localProgress}%</output>
+          )}
+        </div>
       </div>
     </div>
   );
