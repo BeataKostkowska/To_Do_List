@@ -1,26 +1,26 @@
 .task_details {
   font-size: 12px;
   padding: 16px;
-  width: 60%;
+  width: 50%;
   margin: 0 auto;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
-tr {
-  width: 100%;
-  min-width: 170px;
-  display: block;
-  display: flex;
+
+.task_details tr {
+  min-width: 100%;
   padding: 2px 4px;
   border-bottom: 1px solid var(--teal-color);
 }
-tr:first-of-type {
+.task_details tr:first-of-type {
   border-top: 1px solid var(--teal-color);
 }
 
-td:nth-child(odd) {
+.task_details td:nth-child(odd) {
   min-width: 70px;
   width: 30%;
 }
-td:nth-child(even) {
+.task_details td:nth-child(even) {
   min-width: 100px;
   width: 70%;
 }
