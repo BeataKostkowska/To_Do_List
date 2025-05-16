@@ -16,6 +16,22 @@ function Task({ task }) {
 
   const queryClient = useQueryClient();
 
+  const getDeadlineStatus = (deadline) => {
+    if (!deadline) return null;
+
+    const now = new Date();
+    const deadlineDate = new Date(deadline);
+    const timeToDeadline = deadlineDate - now;
+    const differenceInDays = Math.ceil(timeToDeadline / (1000 * 60 * 60 * 24));
+
+    if (differenceInDays < 0)
+      return { emoji: "🚨 ", tooltip: "Deadline passed" };
+    if (differenceInDays <= 1)
+      return { emoji: "⏰ ", tooltip: "Due today/tomorrow" };
+    if (differenceInDays <= 3) return { emoji: "⏳ ", tooltip: "Due in 3 days" };
+    return null;
+  };
+
   const progressMutation = useMutation({
     mutationFn: (updatedData) => {
       return axios.patch(
@@ -58,6 +74,8 @@ function Task({ task }) {
     deleteMutation.mutate(task._id);
   };
 
+  const deadlineStatus = getDeadlineStatus(task.deadline);
+
   return (
     <div
       className={`${styles.task_box}  ${
@@ -66,17 +84,35 @@ function Task({ task }) {
     >
       <div className={styles.task_basic}>
         <p>
+          {deadlineStatus && (
+            <span
+              className={styles.deadline_emoji}
+              data-tooltip-id={`deadline-${task._id}`}
+              data-tooltip-delay-show={800}
+            >
+              {deadlineStatus.emoji}
+            </span>
+          )}
+          {deadlineStatus && (
+            <Tooltip
+              id={`deadline-${task._id}`}
+              place="bottom"
+              content={deadlineStatus.tooltip}
+              className={styles.tooltip}
+              border="2px solid var(--coral-color)"
+            />
+          )}
+          <span className={styles.taskname_text}>{task.taskName}</span>
           {task.priority === 5 ? (
-            <span className={styles.exclamation}>!!!</span>
+            <span className={styles.exclamation}> !!!</span>
           ) : (
             ""
           )}
           {task.priority === 4 ? (
-            <span className={styles.exclamation}>!</span>
+            <span className={styles.exclamation}> !</span>
           ) : (
             ""
           )}
-          <span className={styles.taskname_text}>{task.taskName}</span>
         </p>
         <div className={styles.buttons_box}>
           <div className={styles.tooltip_container}>
@@ -126,7 +162,7 @@ function Task({ task }) {
           </div>
         </div>
       </div>
-      
+
       <TaskDetails task={task} showDetails={showDetails} />
 
       <div className={styles.input_container}>
