@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -37,10 +36,4 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => {
   connectDatabase();
   console.log(`Server listening on port ${port}`);
-});
-
-
-app.use(express.static(path.join(__dirname, "..", "frontend", "dist")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "frontend", "dist", "index.html"));
 });
