@@ -58,6 +58,8 @@ td:nth-child(even) {
 
 .buttons_box {
   display: inline;
+  min-width: 100px;
+  margin-left: 6px;
 }
 
 .icon {
