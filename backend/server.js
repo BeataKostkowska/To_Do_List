@@ -16,10 +16,7 @@ const {
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+
 
 const connectDatabase = async () => {
   try {
@@ -40,4 +37,10 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => {
   connectDatabase();
   console.log(`Server listening on port ${port}`);
+});
+
+
+app.use(express.static(path.join(__dirname, "..", "frontend", "dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "frontend", "dist", "index.html"));
 });
