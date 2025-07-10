@@ -22,7 +22,8 @@ function TaskForm() {
 
   const mutation = useMutation({
     mutationFn: (newTask) => {
-      return axios.post("http://localhost:3000/api/tasks", newTask);
+      // return axios.post("http://localhost:3000/api/tasks", newTask);
+      return axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, newTask);
     },
     onError: (error) => {
       console.error(error);

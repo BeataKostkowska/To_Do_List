@@ -20,7 +20,8 @@ function Task({ task }) {
   const progressMutation = useMutation({
     mutationFn: (updatedData) => {
       return axios.patch(
-        `http://localhost:3000/api/tasks/${task._id}`,
+        // `http://localhost:3000/api/tasks/${task._id}`,
+        `${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`,
         updatedData
       );
     },

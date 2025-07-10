@@ -6,7 +6,8 @@ function TasksList() {
   const { isPending, error, data } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:3000/api/tasks");
+      // const response = await fetch("http://localhost:3000/api/tasks");
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tasks`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
