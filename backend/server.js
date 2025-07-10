@@ -13,9 +13,20 @@ const {
 } = require("./controllers/task.controller.js");
 
 const app = express();
-app.use(cors());
-app.use(express.json());
 
+if (process.env.NODE_ENV === "development") {
+  app.use(cors());
+} else {
+  app.use(
+    cors({
+      origin: "https://to-do-list-oiu3.onrender.com",
+      credentials: true,
+    })
+  );
+}
+console.log("NODE_ENV:", process.env.NODE_ENV);
+
+app.use(express.json());
 
 const connectDatabase = async () => {
   try {
