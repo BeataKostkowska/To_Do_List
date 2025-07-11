@@ -6,3 +6,12 @@
   overflow-y: auto;
   background-color: var(--light-gray-color);
 }
+
+.tasks_list_state {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-gray-color);
+}

@@ -17,9 +17,19 @@ function TasksList() {
     },
   });
 
-  if (isPending) return "Loading...";
+  if (isPending)
+    return (
+      <div className={styles.tasks_list_state}>
+        <p>Loading tasks...</p>
+      </div>
+    );
 
-  if (error) return "An error has occurred: " + error.message;
+  if (error)
+    return (
+      <div className={styles.tasks_list_state}>
+        <p>An error has occurred: {error.message}</p>
+      </div>
+    );
 
   return (
     <div className={styles.tasks_list_container}>
