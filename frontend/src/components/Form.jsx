@@ -1,6 +1,4 @@
-// import { useState } from "react";
 import styles from "./Form.module.css";
-// import DatePicker from "react-datepicker";
 
 function Form({ data, setData, children }) {
   const currentDate = () => {
@@ -9,9 +7,18 @@ function Form({ data, setData, children }) {
     return currentDate;
   };
 
-  // const [startDate, setStartDate] = useState(new Date());
+  const changeDateFormat = (dateISO) => {
+    const date = new Date(dateISO);
+    const formattedDate = new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000
+    )
+      .toISOString()
+      .slice(0, 16);
+    console.log(formattedDate);
+    return formattedDate;
+  };
 
-  return (
+return (
     <form className={styles.form_container}>
       <label htmlFor="taskName">Task description:</label>
       <input
@@ -26,31 +33,13 @@ function Form({ data, setData, children }) {
       <input
         id="deadline"
         type="datetime-local"
-        value={data.deadline || ""}
+        value={data.deadline ? changeDateFormat(data.deadline) : ""}
         min={currentDate()}
         onChange={(e) => {
           console.log(e.target.value);
-          setData({ ...data, deadline: e.target.value }); // ERROR IN EDIT TASK FORM -> after first change (sometimes):  A component is changing an uncontrolled input to be controlled
+          setData({ ...data, deadline: e.target.value }); 
         }}
       />
-      {/* <DatePicker
-        // showIcon
-        selected={new Date()}
-        isClearable
-        // placeholderText="Set deadline"
-        shouldCloseOnSelect={true}
-        // locale={navigator.language}
-        locale="pl-PL"
-        showTimeSelect
-        timeFormat="HH:mm"
-        timeIntervals={15}
-        timeCaption="time"
-        dateFormat="DD-MM-YYYY, HH:mm"
-        onChange={(e) => {
-          console.log(e.target.value);
-          setData({ ...data, deadline: e.target.value });
-        }}
-      /> */}
 
       <label htmlFor="priority">Priority level:</label>
       <input
