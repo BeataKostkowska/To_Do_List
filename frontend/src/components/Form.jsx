@@ -1,7 +1,24 @@
 import styles from "./Form.module.css";
 
 function Form({ data, setData, children }) {
-  return (
+  const currentDate = () => {
+    const currentDate = new Date().toISOString().slice(0, -8);
+    console.log(`current: ${currentDate}`);
+    return currentDate;
+  };
+
+  const changeDateFormat = (dateISO) => {
+    const date = new Date(dateISO);
+    const formattedDate = new Date(
+      date.getTime() - date.getTimezoneOffset() * 60000
+    )
+      .toISOString()
+      .slice(0, 16);
+    console.log(formattedDate);
+    return formattedDate;
+  };
+
+return (
     <form className={styles.form_container}>
       <label htmlFor="taskName">Task description:</label>
       <input
@@ -16,10 +33,11 @@ function Form({ data, setData, children }) {
       <input
         id="deadline"
         type="datetime-local"
-        value={data.deadline || ""}
+        value={data.deadline ? changeDateFormat(data.deadline) : ""}
+        min={currentDate()}
         onChange={(e) => {
           console.log(e.target.value);
-          setData({ ...data, deadline: e.target.value }); // ERROR IN EDIT TASK FORM -> after first change (sometimes):  A component is changing an uncontrolled input to be controlled
+          setData({ ...data, deadline: e.target.value }); 
         }}
       />
 

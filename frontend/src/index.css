@@ -68,6 +68,7 @@ body {
   --orange-color: #f4a261;
   --blue-color: #5dade2;
   --outside-modal-background: #2c2c2cab;
+  --calendar-icon-filter: 0;
 }
 
 [data-theme="light"] {
@@ -81,4 +82,5 @@ body {
   --orange-color: #f4a261;
   --blue-color: #4a90e2;
   --outside-modal-background: #d5d4d4ab;
+  --calendar-icon-filter: 1;
 }

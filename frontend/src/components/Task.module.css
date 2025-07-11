@@ -29,33 +29,6 @@
   padding-right: 0.5rem;
 }
 
-/* .task_details {
-  font-size: 12px;
-  padding: 16px;
-  width: 60%;
-  margin: 0 auto;
-}
-tr {
-  width: 100%;
-  min-width: 170px;
-  display: block;
-  display: flex;
-  padding: 2px 4px;
-  border-bottom: 1px solid var(--teal-color);
-}
-tr:first-of-type {
-  border-top: 1px solid var(--teal-color);
-}
-
-td:nth-child(odd) {
-  min-width: 70px;
-  width: 30%;
-}
-td:nth-child(even) {
-  min-width: 100px;
-  width: 70%;
-} */
-
 .buttons_box {
   display: inline;
   min-width: 100px;
@@ -149,11 +122,7 @@ td:nth-child(even) {
   border: 2px var(--mint-color) solid;
 }
 
-.progress_tooltip {
-  background-color: var(--light-gray-color) !important;
-  color: var(--dark-gray-color) !important;
-  border: 2px solid var(--teal-color) !important;
-  font-size: 14px;
-  padding: 4px 8px !important;
-  border-radius: 4px;
+.deadline_emoji {
+  font-size: 16px;
+  cursor: help;
 }

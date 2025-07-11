@@ -10,35 +10,40 @@ function TaskDetails({ task, showDetails }) {
   return (
     <table
       className={styles.task_details}
-      style={{ display: showDetails ? "block" : "none" }}
+      style={{ display: showDetails ? "table" : "none" }}
     >
-      {task.deadline && (
-        <tr>
-          <td>Deadline:</td> <td>{prettyDate(task.deadline)} </td>
-        </tr>
-      )}
-      {task.priority && (
-        <tr>
-          <td>Priority:</td> <td>{task.priority}</td>
-        </tr>
-      )}
-      {task.createdAt && (
-        <tr>
-          <td>Created:</td>
-          <td> {prettyDate(task.createdAt)}</td>{" "}
-        </tr>
-      )}
-      {task.tags.length > 0 && (
-        <tr>
-          <td>Tags:</td>
-          <td> {task.tags} </td>
-        </tr>
-      )}
-      {task.notes && (
-        <tr>
-          <td>Notes:</td> <td>{task.notes} </td>
-        </tr>
-      )}
+      <tbody>
+        {task.deadline && (
+          <tr>
+            <td>Deadline:</td>
+            <td>{prettyDate(task.deadline)} </td>
+          </tr>
+        )}
+        {task.priority && (
+          <tr>
+            <td>Priority:</td>
+            <td>{task.priority}</td>
+          </tr>
+        )}
+        {task.createdAt && (
+          <tr>
+            <td>Created:</td>
+            <td>{prettyDate(task.createdAt)}</td>
+          </tr>
+        )}
+        {task.tags.length > 0 && (
+          <tr>
+            <td>Tags:</td>
+            <td> {task.tags} </td>
+          </tr>
+        )}
+        {task.notes && (
+          <tr>
+            <td>Notes:</td>
+            <td>{task.notes}</td>
+          </tr>
+        )}
+      </tbody>
     </table>
   );
 }
